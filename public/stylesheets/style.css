@@ -1,0 +1,17 @@
+html, body {
+  user-select: none;
+  -webkit-user-select: none;  /* Safari */
+  -ms-user-select: none;      /* IE/Edge */
+  touch-action: pan-x pan-y;
+  overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-content: center;  /* 수평 가운데 */
+  align-items: center;      /* 수직 가운데 */
+  height: 100vh;            /* 브라우저 높이 기준 */
+}
+canvas {
+  display: block;
+}
+

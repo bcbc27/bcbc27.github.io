@@ -1,0 +1,499 @@
+let windowRatio;
+
+let cols;
+let rows;
+let spacing; // 그리드 간격
+let circles = [];
+let sizes = [];
+let ratio;
+let polySynth;
+
+let f_circle_x;
+let f_circle_y;
+let f_circle_radius;
+
+
+let s_circle_x;
+let s_circle_y;
+let s_circle_radius;
+
+
+
+let angles;
+let lf_point_xy=[];
+let lf_circles=[];
+let lf_sizes=[];
+
+let ls_point_xy=[];
+let ls_circles=[];
+let ls_sizes=[];
+
+
+let cutoffFreq = 0;
+let cutoffFreq2 = 0;
+
+let pad_osc=[];
+let pad_frq=[261.6,440.0,659.26]
+let pad_pitchs = ['G', 'D', 'G', 'C'];
+let pad_oct = [2,3,4];
+
+
+
+
+
+function setup() {
+  Tone.start();
+  cols = 10;
+  rows = 19;
+  spacing = windowWidth/cols; // 그리드 간격
+  windowRatio = windowWidth/750
+  ratio = spacing/2;
+
+  f_circle_radius = spacing*2.5*2
+
+  s_circle_radius = spacing*2.5*2
+  
+  angleMode(DEGREES)
+  
+  createCanvas(windowWidth, windowWidth);
+
+  // polySynth = new p5.PolySynth();
+  // console.log(polySynth);
+  // padSynth = new p5.PolySynth();
+
+  // for (let i = 0; i < pad_frq.length; i++) {
+  //   pad_osc.push(new p5.Oscillator('triangle'));
+  //   pad_osc[i].freq = pad_frq[i];
+  // };
+
+  // reverb = new p5.Reverb();
+  // distortion = new p5.Distortion();
+  // delay = new p5.Delay();
+  // filter = new p5.LowPass();
+  // pad_env = new p5.Envelope();
+
+  // pad_env.setADSR(1, 1, 0.7, 5)
+
+  // distortion.drywet(0.05);
+  // delay.drywet(0.5);
+
+
+  // delay.setType(1);
+  // delay.delayTime(0.5);
+  // reverb.set(3,100)
+
+
+  // polySynth.disconnect();
+  // polySynth.connect(delay);
+
+  //   padSynth.disconnect();
+  //   padSynth.connect(filter);
+  //   filter.connect(reverb);
+
+
+  // for (let i = 0; i < pad_frq.length; i++) {
+  //   pad_osc.push(new p5.Oscillator('triangle'));
+  //   pad_osc[i].freq = pad_frq[i];
+  // };
+  console.log("하이"+pad_osc)
+  sizes[0] = 14;
+  sizes[1] = 4;
+  sizes[2] = 14;
+  sizes[3] = 16;
+  sizes[4] = 12;
+  sizes[5] = 10;
+  sizes[6] = 4;
+  sizes[7] = 16;
+  sizes[8] = 12;
+  sizes[9] = 10;
+  sizes[10] = 16;
+  sizes[11] = 8;
+  sizes[12] = 16;
+  sizes[13] = 8;
+  sizes[14] = 10;
+  sizes[15] = 10;
+  sizes[16] = 10;
+  sizes[17] = 10;
+  sizes[18] = 10;
+  sizes[19] = 12;
+  sizes[20] = 20;
+  sizes[21] = 16;
+  sizes[22] = 20;
+  sizes[23] = 14;
+  sizes[24] = 8;
+  sizes[25] = 10;
+  sizes[26] = 12;
+  sizes[27] = 4;
+  sizes[28] = 8;
+  sizes[29] = 14;
+  sizes[30] = 16;
+  sizes[31] = 20;
+  sizes[32] = 4;
+  sizes[33] = 8;
+  sizes[34] = 6;
+  sizes[35] = 10;
+  sizes[36] = 10;
+  sizes[37] = 20;
+  sizes[38] = 6;
+  sizes[39] = 16;
+  sizes[40] = 14;
+  sizes[41] = 16;
+  sizes[42] = 14;
+  sizes[43] = 16;
+  sizes[44] = 4;
+  sizes[45] = 10;
+  sizes[46] = 4;
+  sizes[47] = 16;
+  sizes[48] = 4;
+  sizes[49] = 20;
+  sizes[50] = 12;
+  sizes[51] = 8;
+  sizes[52] = 8;
+  sizes[53] = 8;
+  sizes[54] = 6;
+  sizes[55] = 10;
+  sizes[56] = 10;
+  sizes[57] = 10;
+  //첫번째 원 
+  sizes[58] = 6;
+  sizes[59] = 16;
+  sizes[60] = 10;
+  sizes[61] = 4;
+  sizes[62] = 10;
+  sizes[63] = 14;
+  sizes[64] = 8;
+  sizes[65] = 10;
+  sizes[66] = 20;
+  sizes[67] = 4;
+  sizes[68] = 8;
+  sizes[69] = 14;
+  sizes[70] = 8;
+  sizes[71] = 8;
+  sizes[72] = 12;
+  sizes[73] = 8;
+  sizes[74] = 10;
+  sizes[75] = 10;
+  sizes[76] = 10;
+  sizes[77] = 20;
+  sizes[78] = 10;
+  sizes[79] = 12;
+  sizes[80] = 6;
+  sizes[81] = 16;
+  sizes[82] = 14;
+  sizes[83] = 16;
+  sizes[84] = 12;
+  sizes[85] = 10;
+  sizes[86] = 4;
+  sizes[87] = 16;
+  sizes[88] = 12;
+  sizes[89] = 10;
+  sizes[90] = 4;
+  sizes[91] = 20;
+  sizes[92] = 16;
+  sizes[93] = 8;
+  sizes[94] = 14;
+  sizes[95] = 10;
+  sizes[96] = 10;
+  sizes[97] = 10;
+  sizes[98] = 14;
+  sizes[99] = 8;
+  sizes[100] = 6;
+  sizes[101] = 16;
+  sizes[102] = 20;
+  sizes[103] = 14;
+  sizes[104] = 16;
+  sizes[105] = 10;
+  sizes[106] = 20;
+  sizes[107] = 4;
+  sizes[108] = 16;
+  sizes[109] = 6;
+  sizes[110] = 8;
+  sizes[111] = 8;
+  sizes[112] = 4;
+  sizes[113] = 8;
+  sizes[114] = 20;
+  sizes[115] = 10;
+  sizes[116] = 10;
+  sizes[117] = 20;
+  sizes[118] = 20;
+  sizes[119] = 4;
+  sizes[120] = 10;
+  sizes[121] = 4;
+  sizes[122] = 6;
+  sizes[123] = 16;
+  sizes[124] = 16;
+  sizes[125] = 10;
+  sizes[126] = 4;
+  sizes[127] = 16;
+  sizes[128] = 16;
+  sizes[129] = 6;
+  sizes[130] = 12;
+  //두번째 원
+  sizes[131] = 8;
+  sizes[132] = 8;
+  sizes[133] = 8;
+  sizes[134] = 14;
+  sizes[135] = 10;
+  sizes[136] = 10;
+  sizes[137] = 10;
+  sizes[138] = 14;
+  sizes[139] = 8;
+  sizes[140] = 14;
+  sizes[141] = 16;
+  sizes[142] = 10;
+  sizes[143] = 14;
+  sizes[144] = 12;
+  sizes[145] = 10;
+  sizes[146] = 20;
+  sizes[147] = 4;
+  sizes[148] = 12;
+  sizes[149] = 10;
+  sizes[150] = 16;
+  sizes[151] = 20;
+  sizes[152] = 12;
+  sizes[153] = 8;
+  sizes[154] = 10;
+  sizes[155] = 10;
+  sizes[156] = 10;
+  sizes[157] = 20;
+  sizes[158] = 10;
+  sizes[159] = 12;
+  sizes[160] = 20;
+  sizes[161] = 16;
+  sizes[162] = 14;
+  sizes[163] = 16;
+  sizes[164] = 8;
+  sizes[165] = 10;
+  sizes[166] = 4;
+  sizes[167] = 16;
+  sizes[168] = 8;
+  sizes[169] = 14;
+  sizes[170] = 16;
+  sizes[171] = 8;
+  sizes[172] = 16;
+  sizes[173] = 8;
+  sizes[174] = 6;
+  sizes[175] = 10;
+  sizes[176] = 10;
+  sizes[177] = 10;
+  sizes[178] = 6;
+  sizes[179] = 16;
+  sizes[180] = 14;
+  sizes[181] = 4;
+  sizes[182] = 20;
+  sizes[183] = 14;
+  sizes[184] = 4;
+  sizes[185] = 10;
+  sizes[186] = 20;
+  sizes[187] = 4;
+  sizes[188] = 4;
+  sizes[189] = 20;
+
+  for (let i = 0; i < 190; i++) {
+    
+    let x = i % cols;
+
+    let y = int(i / cols);
+
+    let cx = x * spacing + spacing/2;
+    let cy = (y * ratio + ratio);
+
+    
+    if (i === 58){
+      s_circle_x = cx;
+      s_circle_y = cy;
+    }
+    
+    if (i === 131){
+      f_circle_x = cx;
+      f_circle_y = cy;
+    }
+    circles.push(new P_circle(cx, cy, sizes[i]));
+  }
+  
+  
+  //원에 들어가는 포인트들 관리
+  angles = [0, 11, 23, 35, 47, 58, 68]
+  lf_sizes = [6,8,8,10,10,12,12,14,14,16,16,20,20]
+  
+  for (i in angles){
+    if (angles[i] === 0){
+      lf_point_xy.push(
+        [f_circle_x + sin(90)*(f_circle_radius/2),
+         f_circle_y + cos(90)*(f_circle_radius/2)]
+      )
+      ls_point_xy.push(
+        [s_circle_x + sin(-90)*(f_circle_radius/2),
+         s_circle_y + cos(-90)*(f_circle_radius/2)]
+      )
+    } else {
+      lf_point_xy.push(
+        [f_circle_x + sin(angles[i]+90)*(f_circle_radius/2),
+         f_circle_y + cos(angles[i]+90)*(f_circle_radius/2)]
+      )
+      ls_point_xy.push(
+        [s_circle_x + sin(angles[i]-90)*(f_circle_radius/2),
+         s_circle_y + cos(angles[i]-90)*(f_circle_radius/2)]
+      )
+      lf_point_xy.push(
+        [f_circle_x + sin(-angles[i]+90)*(f_circle_radius/2),
+         f_circle_y + cos(-angles[i]+90)*(f_circle_radius/2)]
+      )
+      ls_point_xy.push(
+        [s_circle_x + sin(-angles[i]-90)*(f_circle_radius/2),
+         s_circle_y + cos(-angles[i]-90)*(f_circle_radius/2)]
+      )      
+    }
+  }
+  
+  console.log(lf_point_xy)
+  
+  for (i in lf_point_xy){
+    let [x,y] = lf_point_xy[i];
+    lf_circles.push(new LF_circle(x,y,lf_sizes[i]))
+  }
+  for (i in ls_point_xy){
+    let [x,y] = ls_point_xy[i];
+    lf_circles.push(new LF_circle(x,y,lf_sizes[i]))
+  }
+}
+
+
+
+
+function draw() {
+  background(255);
+  fill(0);
+  noStroke();
+  // push();
+  // text(str(cutoffFreq),width/2,height/2);
+  // text(str(cutoffFreq2),width/2,height/2+50);
+  // pop();
+  // push();
+  // noFill();
+  // stroke(50)
+  // ellipse(f_circle_x,f_circle_y,f_circle_radius)
+  // ellipse(s_circle_x,s_circle_y,s_circle_radius)
+  // pop()
+  
+//   push()
+//   fill('blue')
+//   ellipse(lf_pointX,lf_pointY,20)
+//   pop()
+  
+
+  for(let c of circles) {
+    c.display()
+  }
+  
+  for(let lf of lf_circles){
+    lf.display()
+  }
+}
+
+
+function touchStarted() {
+    Tone.start();
+    if (Tone.context.state !== 'running') {
+        Tone.context.resume();
+    }
+    // userStartAudio();
+
+    for(let c of circles) {
+        if(c.contains(mouseX,mouseY)){
+          synth.triggerAttackRelease(c.note+str(c.oct),c.dur)
+          //polySynth.play(c.note+str(c.oct),c.velo,0,c.dur);
+        }
+    }
+    let d = dist(mouseX,mouseY,f_circle_x,f_circle_y)
+    let d2 = dist(mouseX,mouseY,s_circle_x,s_circle_y)
+    let bound = 20;
+    if(d > (f_circle_radius/2-bound) &&
+        d < (f_circle_radius/2+bound)){
+        synth2.triggerAttack(["C2", "E3", "A4"],Tone.now());
+    }
+    if(d2 > (s_circle_radius/2-bound) &&
+        d2 < (s_circle_radius/2+bound)){
+        synth3.triggerAttack(["C2", "D3", "F4"],Tone.now());
+    }
+}
+
+function touchMoved(){
+    let d = dist(mouseX,mouseY,f_circle_x,f_circle_y)
+    let d2 = dist(mouseX,mouseY,s_circle_x,s_circle_y)
+    let bound = 20;
+    if(d > (f_circle_radius/2-bound) &&
+        d < (f_circle_radius/2+bound)){
+        cutoffFreq = abs(f_circle_y - mouseY)*10 *0.2 + 100;
+        filter2.set({frequency: cutoffFreq})
+
+    }
+        if(d2 > (s_circle_radius/2-bound) &&
+        d2 < (s_circle_radius/2+bound)){
+        cutoffFreq2 = abs(s_circle_y - mouseY)*10 *0.6 + 100;
+        filter3.set({frequency: cutoffFreq2})
+        
+    }
+}
+
+function touchEnded() {
+    synth2.triggerRelease(["C2", "E3", "A4"],Tone.now());
+    synth3.triggerRelease(["C2", "D3", "F4"],Tone.now());
+    console.log("release")
+}
+
+function mouseReleased() {
+    synth2.triggerRelease(["C2", "E3", "A4"],Tone.now());
+    synth3.triggerRelease(["C2", "D3", "F4"],Tone.now());
+    console.log("release")
+}
+
+class P_circle {
+  constructor(x, y, size){
+    this.x = x;
+    this.y = y;
+    this.size = size * windowRatio;
+    this.up = 0;
+    if (this.size <= 8){
+      this.dur = 0.15
+    } else {
+      this.dur = size/65;
+    }
+    this.oct = int(8-size/4);
+    this.note = random(['C','F','D','G'])
+    this.velo = size/20;
+  }
+  
+  contains(px, py){
+    let d = dist(px,py,this.x,this.y);
+    return d < 20
+  }
+  
+  display(){
+    ellipse(this.x,this.y,this.size + this.up)
+    if(dist(mouseX,mouseY,this.x,this.y)<20){
+      this.up = lerp(this.up,3,0.5);
+    } else {
+      this.up = lerp(this.up,0,0.5);
+    }
+  }
+  
+}
+
+class LF_circle {
+  constructor(x, y, size){
+    this.x = x;
+    this.y = y;
+    this.size = size * windowRatio;
+    this.up = 0;
+  }
+
+  display(){
+    ellipse(this.x,this.y,this.size + this.up)
+    if(dist(mouseX,mouseY,this.x,this.y)<40){
+      this.up = lerp(this.up,5,0.1);
+    } else {
+      this.up = lerp(this.up,0,0.1);
+    }
+  }
+}
