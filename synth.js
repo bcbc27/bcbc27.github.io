@@ -12,7 +12,6 @@ const reverb = new Tone.Reverb({
     preDelay: 1,
     wet: 0.8
 });
-
 filter.connect(feedbackDelay);
 filter2.connect(reverb);
 

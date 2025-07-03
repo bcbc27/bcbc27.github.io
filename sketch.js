@@ -18,7 +18,6 @@ let s_circle_y;
 let s_circle_radius;
 
 
-
 let angles;
 let lf_point_xy=[];
 let lf_circles=[];
