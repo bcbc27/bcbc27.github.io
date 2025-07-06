@@ -250,7 +250,7 @@ function setup() {
   // sizes[188] = 4;
   // sizes[189] = 20;
 
-  for (let i = 0; i < 190; i++) {
+  for (let i = 0; i < 112; i++) {
     
     let x = i % cols;
 
