@@ -1,13 +1,9 @@
 body,html {
-  align-items: center;
   user-select: none;
   -webkit-user-select: none;  /* Safari */
   -ms-user-select: none;      /* IE/Edge */
   touch-action: pan-x pan-y;
   overscroll-behavior: none;
-  margin: 0;
-  padding: 0;
-
 }
 
 .container {
