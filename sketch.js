@@ -41,8 +41,8 @@ let W;
 
 
 function setup() {
-  H = windowHeight*0.95
-  W = windowWidth*0.95
+  H = windowHeight*0.85
+  W = windowWidth*0.85
   Tone.start();
   cols = 8;
   rows = 14;
