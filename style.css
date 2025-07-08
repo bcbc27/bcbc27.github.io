@@ -1,5 +1,5 @@
 body,html {
-  display: flex;
+  display: grid;
   justify-content: center;  /* 수평 가운데 */
   align-items: center;      /* 수직 가운데 */
   height: 100vh;            /* 브라우저 높이 기준 */
