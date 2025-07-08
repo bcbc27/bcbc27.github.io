@@ -1,6 +1,6 @@
 body,html {
   display: grid;
-  margin: 0;
+  margin: 20px;
   padding: 0;
   justify-content: center;  /* 수평 가운데 */
   align-items: center;      /* 수직 가운데 */
