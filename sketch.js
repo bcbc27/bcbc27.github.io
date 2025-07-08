@@ -46,8 +46,8 @@ function setup() {
   Tone.start();
   cols = 8;
   rows = 14;
-  spacing = H/cols; // 그리드 간격
-  windowRatio = H/750
+  spacing = W/cols; // 그리드 간격
+  windowRatio = W/750
   ratio = spacing/2;
 
   f_circle_radius = spacing*2.5*2
@@ -56,7 +56,7 @@ function setup() {
   
   angleMode(DEGREES)
   
-  createCanvas(H, ratio*15);
+  createCanvas(W, ratio*15);
 
   console.log("하이"+pad_osc)
   sizes[0] = 12;
