@@ -36,16 +36,18 @@ let pad_frq=[261.6,440.0,659.26]
 let pad_pitchs = ['G', 'D', 'G', 'C'];
 let pad_oct = [2,3,4];
 
-
-
+let H;
+let W;
 
 
 function setup() {
+  H = windowHeight*0.95
+  W = windowWidth*0.95
   Tone.start();
   cols = 8;
   rows = 14;
-  spacing = windowWidth/cols; // 그리드 간격
-  windowRatio = windowWidth/750
+  spacing = H/cols; // 그리드 간격
+  windowRatio = H/750
   ratio = spacing/2;
 
   f_circle_radius = spacing*2.5*2
@@ -54,7 +56,7 @@ function setup() {
   
   angleMode(DEGREES)
   
-  createCanvas(windowWidth, windowWidth);
+  createCanvas(H, ratio*15);
 
   console.log("하이"+pad_osc)
   sizes[0] = 12;
