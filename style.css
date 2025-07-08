@@ -10,6 +10,7 @@ body,html {
   -ms-user-select: none;      /* IE/Edge */
   touch-action: pan-x pan-y;
   overscroll-behavior: none;
+  overflow: hidden;
 }
 
 canvas {
