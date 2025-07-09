@@ -39,7 +39,7 @@ let pad_oct = [2,3,4];
 let H;
 let W;
 
-
+let cnv;
 function setup() {
   H = windowHeight*0.85
   W = windowWidth*0.85
@@ -56,7 +56,17 @@ function setup() {
   
   angleMode(DEGREES)
   
-  createCanvas(W, ratio*15);
+  cnv = createCanvas(W, ratio*15);
+
+    // 캔버스에 직접 touchend 리스너 추가
+  let lastTouchEnd = 0;
+  cnv.elt.addEventListener('touchend', function (e) {
+    const now = new Date().getTime();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault(); // 더블탭 확대 방지
+    }
+    lastTouchEnd = now;
+  }, false);
 
   console.log("하이"+pad_osc)
   sizes[0] = 12;
