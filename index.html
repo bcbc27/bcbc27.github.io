@@ -11,5 +11,44 @@
   <body>
         <script src="/synth.js"></script>
         <script src="/sketch.js"></script>
+        <button className="full-screen-button" onClick={openFullScreen()}>
+          OPEN
+        </button>
+        <button className="close-screen-button" onClick={closeFullScreen()}>
+          CLOSE
+        </button>
+        <script>
+      function openFullScreen() {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          /* Firefox */
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          /* Chrome, Safari and Opera */
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          /* IE/Edge */
+          document.documentElement.msRequestFullscreen();
+        }
+      }
+
+// 전체화면 비활성화
+        function closeFullScreen() {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            /* Firefox */
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            /* IE/Edge */
+            document.msExitFullscreen();
+          }
+        }
+
+        </script>
   </body>
 </html>
